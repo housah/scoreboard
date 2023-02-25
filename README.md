@@ -1,5 +1,5 @@
 # scoreboard
-Scoreboard application for dual display (control windows & scoarboard windows [fullscreen])
+Scoreboard application for dual display (scoreboard control & scoreboard screen [fullscreen])
 
 Development tools:
 - Visual studio 2022

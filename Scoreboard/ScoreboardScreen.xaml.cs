@@ -14,24 +14,36 @@ using System.Windows.Shapes;
 
 namespace Scoreboard
 {
-   /// <summary>
-   /// Interaction logic for Scoreboard.xaml
-   /// </summary>
    public partial class ScoreboardScreen : Window
    {
 
-      private ScoreboardMain? parent = null;
+      private readonly ScoreboardMain? parent = null;
+      private Dictionary<string, string> options = new Dictionary<string, string>();
 
-      public ScoreboardScreen(ScoreboardMain parent, string eventTitle)
+      public ScoreboardScreen(ScoreboardMain parent, Dictionary<string, string> options)
       {
          InitializeComponent();
-         this.eventTitle.Content = eventTitle;
          this.parent = parent;
+
+         UpdateScreen(options);
       }
 
       private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+      {  
+         parent?.resetScoreboard();
+      }
+
+
+      public void UpdateScreen(Dictionary<string, string> options)
       {
-          this.parent.resetScoreboard();
+         this.options = options;
+
+         BrushConverter bc = new BrushConverter();
+         Background = bc.ConvertFrom(options["bgColor"]) as Brush;
+         eventTitle.Foreground = bc.ConvertFrom(options["fgColor"]) as Brush;
+
+         // event title
+         eventTitle.Content = options["eventName"];
       }
    }
 }

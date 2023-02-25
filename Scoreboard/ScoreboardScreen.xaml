@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Scoreboard"
         mc:Ignorable="d"
-        Title="ScoreboardScreen" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized" Background="#FF333333" Closing="Window_Closing">
+        Title="ScoreboardScreen" Height="450" Width="800" WindowStartupLocation="CenterOwner" WindowState="Maximized" Background="#FF333333" Closing="Window_Closing" ShowInTaskbar="False">
    <Grid>
 
       <Label x:Name="eventTitle" Content="Title" HorizontalAlignment="Left" Margin="10,0,0,0" Width="582" FontSize="48" Foreground="White" Height="108" VerticalAlignment="Top"/>

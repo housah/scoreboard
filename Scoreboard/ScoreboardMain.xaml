@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
         xmlns:local="clr-namespace:Scoreboard"
         mc:Ignorable="d"
         Title="Scoreboard control" Height="600" Width="960" Background="#FF333333" WindowStartupLocation="CenterScreen">
@@ -10,23 +11,29 @@
 
    <Grid>
 
-      <Button x:Name="toggleScoreboard"  Style="{StaticResource btn-dark}" Content="Show Scoreboard" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Click="toggleScoreboard_Click" Foreground="White"/>
+      <Button x:Name="toggleScoreboard"  Style="{StaticResource btn-dark}" Content="Show Scoreboard" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Click="toggleScoreboard_Click" Foreground="White" />
       <Button x:Name="toggleFullScren"  Style="{StaticResource btn-dark}" Content="Toggle FullScreen" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Click="toggleFullScren_Click" Foreground="White"/>
-      <Button x:Name="updateScoreboard" Style="{StaticResource btn-dark}" Content="Update Scoreboard" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Foreground="White"/>
+      <Button x:Name="updateScoreboard" Style="{StaticResource btn-dark}" Content="Update Scoreboard" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Foreground="White" Click="updateScoreboard_Click"/>
 
       <Label Content="Event Name:" HorizontalAlignment="Left" Margin="176,10,0,0" VerticalAlignment="Top" Foreground="#FFA2A2A2" Height="26" Width="77"/>
       <TextBox x:Name="eventName" Template="{StaticResource txtbx-dark}" Padding="2" HorizontalAlignment="Left" Margin="183,37,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="360" Height="32" Background="#FF444444" Foreground="White" FontSize="13"/>
+
+      <Label Content="Background:" HorizontalAlignment="Left" Margin="190,78,0,0" VerticalAlignment="Top" Foreground="#FFA2A2A2" Height="26" Width="76"/>
+      <colorpicker:PortableColorPicker x:Name="bgcolorpicker" ColorState="{Binding ElementName=main, Path=ColorState, Mode=TwoWay}" Margin="271,78,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="30" SelectedColor="#FF333333" ShowAlpha="False"/>
+
+      <Label Content="Foreground:" HorizontalAlignment="Left" Margin="324,78,0,0" VerticalAlignment="Top" Foreground="#FFA2A2A2" Height="26" Width="76"/>
+      <colorpicker:PortableColorPicker x:Name="fgcolorpicker" ColorState="{Binding ElementName=main, Path=ColorState, Mode=TwoWay}" Margin="405,78,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="30" SelectedColor="#FFFFFFFF" ShowAlpha="False"/>
+
       
-      <WrapPanel x:Name="ThumbsPool" Margin="183,90,316,113">
+      
+      <WrapPanel x:Name="ThumbsPool" Margin="183,132,339,266">
          <Button Style="{StaticResource btn-dark}" Content="asdf2" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Foreground="White"/>
          <Button Style="{StaticResource btn-dark}" Content="adsf3" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Foreground="White" />
-         <Button Style="{StaticResource btn-dark}" Content="adsf3" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Foreground="White"/>
-         <Button Style="{StaticResource btn-dark}" Content="adsf3" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Foreground="White"/>
-         <Button Style="{StaticResource btn-dark}" Content="adsf3" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Foreground="White"/>
-         <Button Style="{StaticResource btn-dark}" Content="adsf3" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Foreground="White"/>
-         <Button Style="{StaticResource btn-dark}" Content="adsf3" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Foreground="White"/>
+
       </WrapPanel>
-         
+
+
+
    </Grid>
 </Window>
 

@@ -8,4 +8,8 @@
     <StartupObject>Scoreboard.App</StartupObject>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="PixiEditor.ColorPicker" Version="3.3.1" />
+  </ItemGroup>
+
 </Project>

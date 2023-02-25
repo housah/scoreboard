@@ -40,8 +40,17 @@ namespace Scoreboard
 
       private void toggleScoreboard_Click(object sender, RoutedEventArgs e)
       {
-         if (this.sb == null) { 
-            this.sb = new ScoreboardScreen(this, this.eventName.Text);
+         if (this.sb == null) {
+
+            Dictionary<string, string> options = new Dictionary<string, string>
+            {
+               { "bgColor", this.bgcolorpicker.SelectedColor.ToString() },
+               { "fgColor", this.fgcolorpicker.SelectedColor.ToString() },
+               { "eventName", this.eventName.Text },
+
+            };
+
+            this.sb = new ScoreboardScreen(this, options);
             this.sb.WindowState = WindowState.Normal;
             this.sb.Show();
             this.toggleScoreboard.Content = "Hide Scoreboard";
@@ -76,6 +85,20 @@ namespace Scoreboard
          }
       }
 
+      private void updateScoreboard_Click(object sender, RoutedEventArgs e)
+      {
+         if (this.sb != null)
+         {
+            sb.UpdateScreen(
+               new Dictionary<string, string> {
+                  { "bgColor", this.bgcolorpicker.SelectedColor.ToString() },
+                  { "fgColor", this.fgcolorpicker.SelectedColor.ToString() },
+                  { "eventName", this.eventName.Text }
+               }
+            );
+         }
+      }
+
       public void resetScoreboard()
       {
          this.sb = null;
@@ -83,6 +106,8 @@ namespace Scoreboard
          this.toggleFullScren.IsEnabled = false;
          this.updateScoreboard.IsEnabled = false;
       }
+
+     
 
 
       // END

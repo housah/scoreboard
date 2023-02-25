@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+   <!-- button -->
+   <Style TargetType="Button" x:Key="btn-dark" >
+      <Setter Property="FontSize" Value="13"/>
+      <Setter Property="Template">
+         <Setter.Value>
+            <ControlTemplate TargetType="Button">
+               <Grid x:Name="grid">
+                  <Border x:Name="border" CornerRadius="4" BorderThickness="0" Background="#FF525252">
+                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                  </Border>
+               </Grid>
+               <ControlTemplate.Triggers>
+                  <Trigger Property="IsPressed" Value="True">
+                     <Setter Property="Background" TargetName="border" Value="#FF6262FF"/>
+                  </Trigger>
+                  <Trigger Property="IsEnabled" Value="False">
+                     <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                  </Trigger>
+               </ControlTemplate.Triggers>
+            </ControlTemplate>
+         </Setter.Value>
+      </Setter>
+   </Style>
+
+   <!-- textbox -->
+   <ControlTemplate x:Key="txtbx-dark" TargetType="TextBox">
+      <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="#FF999999"
+                BorderThickness="2" CornerRadius="4">
+         <ScrollViewer x:Name="PART_ContentHost"/>
+      </Border>
+   </ControlTemplate>
+
+
+
+</ResourceDictionary>

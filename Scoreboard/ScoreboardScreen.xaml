@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Scoreboard"
         mc:Ignorable="d"
-        Title="ScoreboardScreen" Height="450" Width="800" WindowStartupLocation="CenterOwner" WindowState="Maximized" Background="#FF333333" Closing="Window_Closing" ShowInTaskbar="False">
+        Title="Scoreboard  {Screen}" Height="450" Width="800" WindowStartupLocation="CenterOwner" WindowState="Maximized" Background="#FF333333" Closing="Window_Closing" ShowInTaskbar="False">
    <Grid>
 
-      <Label x:Name="eventTitle" Content="Title" HorizontalAlignment="Left" Margin="10,0,0,0" Width="582" FontSize="48" Foreground="White" Height="108" VerticalAlignment="Top"/>
+      <Label x:Name="eventName" Content="EventName" FontSize="48" Foreground="White" Height="65" VerticalAlignment="Top" VerticalContentAlignment="Center" Padding="10,0,10,0" FontWeight="Medium"/>
+
+      <Label x:Name="eventFase" Content="EventFase" FontSize="35" Foreground="White" Height="52" VerticalAlignment="Top" Margin="0,48,0,0" VerticalContentAlignment="Center" FontWeight="Light" Padding="10,0,10,0"/>
+
 
    </Grid>
 </Window>

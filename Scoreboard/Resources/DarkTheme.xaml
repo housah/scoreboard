@@ -4,6 +4,7 @@
    <!-- button -->
    <Style TargetType="Button" x:Key="btn-dark" >
       <Setter Property="FontSize" Value="13"/>
+      <Setter Property="Foreground" Value="White" />
       <Setter Property="Template">
          <Setter.Value>
             <ControlTemplate TargetType="Button">
@@ -27,9 +28,9 @@
 
    <!-- textbox -->
    <ControlTemplate x:Key="txtbx-dark" TargetType="TextBox">
-      <Border Background="{TemplateBinding Background}" 
-                x:Name="Bd" BorderBrush="#FF999999"
-                BorderThickness="2" CornerRadius="4">
+      <Border x:Name="Bd" Background="{TemplateBinding Background}" 
+              BorderBrush="#FF777777" BorderThickness="1"
+              CornerRadius="4" Padding="2">
          <ScrollViewer x:Name="PART_ContentHost"/>
       </Border>
    </ControlTemplate>

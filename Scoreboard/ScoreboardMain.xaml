@@ -6,33 +6,64 @@
         xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
         xmlns:local="clr-namespace:Scoreboard"
         mc:Ignorable="d"
-        Title="Scoreboard control" Height="600" Width="960" Background="#FF333333" WindowStartupLocation="CenterScreen">
+        Title="Scoreboard  {Control}" Height="600" Width="960" WindowStartupLocation="CenterScreen">
+   <Window.Background>
+      <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+         <GradientStop Color="#FF333333"/>
+         <GradientStop Color="#FF222222" Offset="1"/>
+      </LinearGradientBrush>
+   </Window.Background>
 
 
    <Grid>
 
-      <Button x:Name="toggleScoreboard"  Style="{StaticResource btn-dark}" Content="Show Scoreboard" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Click="toggleScoreboard_Click" Foreground="White" />
-      <Button x:Name="toggleFullScren"  Style="{StaticResource btn-dark}" Content="Toggle FullScreen" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Click="toggleFullScren_Click" Foreground="White"/>
-      <Button x:Name="updateScoreboard" Style="{StaticResource btn-dark}" Content="Update Scoreboard" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Foreground="White" Click="updateScoreboard_Click"/>
+      <!-- TOPBAR -->
+      <Border BorderBrush="Black" CornerRadius="4" BorderThickness="0" Height="50" Padding="10" VerticalAlignment="Top" Margin="10,10,10,0" Grid.ColumnSpan="2">
+         <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+               <GradientStop Color="#FF444444"/>
+               <GradientStop Color="#FF393939" Offset="1"/>
+            </LinearGradientBrush>
+         </Border.Background>
+         <DockPanel>
+            <Image Source="pack://application:,,,/Resources/scoreboardlogo.png" Margin="0, 0, 10, 0"/>
+            <Label Content="S C O R E B O A R D" Foreground="#FFEEEEEE" FontSize="20" FontWeight="Light" Padding="0,0,0,0"/>
+            <Button x:Name="b_exit" Style="{StaticResource btn-dark}" Content="Exit" Width="60" Click="b_exit_Click" HorizontalAlignment="Right"/>
+         </DockPanel>
+      </Border>
 
-      <Label Content="Event Name:" HorizontalAlignment="Left" Margin="176,10,0,0" VerticalAlignment="Top" Foreground="#FFA2A2A2" Height="26" Width="77"/>
-      <TextBox x:Name="eventName" Template="{StaticResource txtbx-dark}" Padding="2" HorizontalAlignment="Left" Margin="183,37,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="360" Height="32" Background="#FF444444" Foreground="White" FontSize="13"/>
+      <!-- SIDEBAR -->
+      <Border Background="#FF3F3F3F" CornerRadius="4" BorderThickness="0" Margin="10,70,0,10" HorizontalAlignment="Left"  Width="160">
+         <StackPanel Margin="10">
+            <Button x:Name="toggleScoreboard" Style="{StaticResource btn-dark}" Content="Show Scoreboard" Height="35" Width="140" Click="toggleScoreboard_Click" Margin="0,0,0,5" />
+            <Button x:Name="toggleFullScren" Style="{StaticResource btn-dark}" Content="Toggle FullScreen" Height="35" Width="148" Click="toggleFullScren_Click" Margin="0,0,0,5"/>
+            <Button x:Name="updateScoreboard" Style="{StaticResource btn-dark}" Content="Update Scoreboard" Height="35" Width="148" Click="updateScoreboard_Click" Margin="0,0,0,13"/>
+         </StackPanel>
+      </Border>
 
-      <Label Content="Background:" HorizontalAlignment="Left" Margin="190,78,0,0" VerticalAlignment="Top" Foreground="#FFA2A2A2" Height="26" Width="76"/>
-      <colorpicker:PortableColorPicker x:Name="bgcolorpicker" ColorState="{Binding ElementName=main, Path=ColorState, Mode=TwoWay}" Margin="271,78,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="30" SelectedColor="#FF333333" ShowAlpha="False"/>
+      <!-- MAIN CONFIG -->
+      <Border Background="#FF3F3F3F" CornerRadius="4" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180,70,0,0" Height="140" Width="474">
+         <StackPanel Margin="10">
 
-      <Label Content="Foreground:" HorizontalAlignment="Left" Margin="324,78,0,0" VerticalAlignment="Top" Foreground="#FFA2A2A2" Height="26" Width="76"/>
-      <colorpicker:PortableColorPicker x:Name="fgcolorpicker" ColorState="{Binding ElementName=main, Path=ColorState, Mode=TwoWay}" Margin="405,78,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="30" SelectedColor="#FFFFFFFF" ShowAlpha="False"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+               <Label Content="Event Name:" Foreground="#FFA2A2A2" Height="26" Width="80"/>
+               <TextBox x:Name="eventName" Template="{StaticResource txtbx-dark}" Text="Title" VerticalContentAlignment="Center" Width="374" Height="32" Background="#FF333333" Foreground="White" FontSize="13"/>
+            </StackPanel>
 
-      
-      
-      <WrapPanel x:Name="ThumbsPool" Margin="183,132,339,266">
-         <Button Style="{StaticResource btn-dark}" Content="asdf2" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Foreground="White"/>
-         <Button Style="{StaticResource btn-dark}" Content="adsf3" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" BorderThickness="0" Height="35" Width="148" Foreground="White" />
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+               <Label Content="Event Fase:" Foreground="#FFA2A2A2" Height="26" Width="80"/>
+               <TextBox x:Name="eventFase" Template="{StaticResource txtbx-dark}" Text="Subtitle" VerticalContentAlignment="Center" Width="374" Height="32" Background="#FF333333" Foreground="White" FontSize="13"/>
+            </StackPanel>
 
-      </WrapPanel>
-
-
+            <StackPanel Orientation="Horizontal">
+               <Label Content="Colors:" Foreground="#FFA2A2A2" Height="26" Width="80"/>
+               <Label Content="Background" Foreground="#FFA2A2A2" Height="26" Width="76"/>
+               <colorpicker:PortableColorPicker x:Name="bgcolorpicker" Height="30" Width="30" SelectedColor="#FF000000" ShowAlpha="False"/>
+               <Label Content="Foreground" Foreground="#FFA2A2A2" Height="26" Width="76"/>
+               <colorpicker:PortableColorPicker x:Name="fgcolorpicker" Height="30" Width="30" SelectedColor="#FFFFFFFF" ShowAlpha="False"/>
+            </StackPanel>
+         </StackPanel>
+      </Border>
 
    </Grid>
 </Window>

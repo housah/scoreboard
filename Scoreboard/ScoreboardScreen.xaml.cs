@@ -40,10 +40,12 @@ namespace Scoreboard
 
          BrushConverter bc = new BrushConverter();
          Background = bc.ConvertFrom(options["bgColor"]) as Brush;
-         eventTitle.Foreground = bc.ConvertFrom(options["fgColor"]) as Brush;
+         eventName.Foreground = bc.ConvertFrom(options["fgColor"]) as Brush;
+         eventFase.Foreground = bc.ConvertFrom(options["fgColor"]) as Brush;
 
-         // event title
-         eventTitle.Content = options["eventName"];
+         // event name & fase
+         eventName.Content = options["eventName"];
+         eventFase.Content = options["eventFase"];
       }
    }
 }

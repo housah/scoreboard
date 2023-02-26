@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 
 namespace Scoreboard
 {
-   /// <summary>
-   /// Interaction logic for MainWindow.xaml
-   /// </summary>
    public partial class ScoreboardMain : Window
    {
 
-      private ScoreboardScreen? sb = null;
-      private bool fs = false;
+      private ScoreboardScreen? sb = null; // SCREEN WINDOW
+      private bool fs = false;             // FULLSCREEN STATUS
 
+      // INIT
       public ScoreboardMain()
       {
          InitializeComponent();
@@ -32,12 +30,27 @@ namespace Scoreboard
          this.updateScoreboard.IsEnabled = false;
       }
 
+      // EXIT OVERRIDE
       protected override void OnClosing(CancelEventArgs e)
       {
-         e.Cancel = true;
-         Application.Current.Shutdown();
+         MessageBoxResult res = MessageBox.Show("Confirm exit?", "Exit", MessageBoxButton.YesNo);
+         if (res == MessageBoxResult.Yes)
+         {
+            Application.Current.Shutdown();
+         } 
+         else
+         {
+            e.Cancel = true;
+         }
       }
 
+      // EXIT
+      private void b_exit_Click(object sender, RoutedEventArgs e)
+      {
+         Close();
+      }
+
+      // TOGGLE SCREEN WINDOW
       private void toggleScoreboard_Click(object sender, RoutedEventArgs e)
       {
          if (this.sb == null) {
@@ -47,7 +60,7 @@ namespace Scoreboard
                { "bgColor", this.bgcolorpicker.SelectedColor.ToString() },
                { "fgColor", this.fgcolorpicker.SelectedColor.ToString() },
                { "eventName", this.eventName.Text },
-
+               { "eventFase", this.eventFase.Text }
             };
 
             this.sb = new ScoreboardScreen(this, options);
@@ -66,6 +79,7 @@ namespace Scoreboard
          }
       }
 
+      // TOGGLE FULL SCREEN
       private void toggleFullScren_Click(object sender, RoutedEventArgs e)
       {
          if (this.sb != null) { 
@@ -85,6 +99,7 @@ namespace Scoreboard
          }
       }
 
+      // UPDATE SCREEN
       private void updateScoreboard_Click(object sender, RoutedEventArgs e)
       {
          if (this.sb != null)
@@ -93,12 +108,14 @@ namespace Scoreboard
                new Dictionary<string, string> {
                   { "bgColor", this.bgcolorpicker.SelectedColor.ToString() },
                   { "fgColor", this.fgcolorpicker.SelectedColor.ToString() },
-                  { "eventName", this.eventName.Text }
+                  { "eventName", this.eventName.Text },
+                  { "eventFase", this.eventFase.Text }
                }
             );
          }
       }
 
+      // CLOSE AND RESET SCREEN
       public void resetScoreboard()
       {
          this.sb = null;
@@ -107,9 +124,6 @@ namespace Scoreboard
          this.updateScoreboard.IsEnabled = false;
       }
 
-     
-
-
-      // END
+   // END
    }
 }

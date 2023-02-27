@@ -6,7 +6,7 @@
         xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
         xmlns:local="clr-namespace:Scoreboard"
         mc:Ignorable="d"
-        Title="Scoreboard  {Control}" Height="600" Width="960" WindowStartupLocation="CenterScreen">
+        Title="Scoreboard  {Control}" Height="600" Width="1000" WindowStartupLocation="CenterScreen" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
    <Window.Background>
       <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
          <GradientStop Color="#FF333333"/>
@@ -14,35 +14,32 @@
       </LinearGradientBrush>
    </Window.Background>
 
+   <WindowChrome.WindowChrome>
+      <WindowChrome CaptionHeight="0"/>
+   </WindowChrome.WindowChrome>
+
 
    <Grid>
 
-      <!-- TOPBAR -->
-      <Border BorderBrush="Black" CornerRadius="4" BorderThickness="0" Height="50" Padding="10" VerticalAlignment="Top" Margin="10,10,10,0" Grid.ColumnSpan="2">
-         <Border.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-               <GradientStop Color="#FF444444"/>
-               <GradientStop Color="#FF393939" Offset="1"/>
-            </LinearGradientBrush>
-         </Border.Background>
-         <DockPanel>
-            <Image Source="pack://application:,,,/Resources/scoreboardlogo.png" Margin="0, 0, 10, 0"/>
-            <Label Content="S C O R E B O A R D" Foreground="#FFEEEEEE" FontSize="20" FontWeight="Light" Padding="0,0,0,0"/>
-            <Button x:Name="b_exit" Style="{StaticResource btn-dark}" Content="Exit" Width="60" Click="b_exit_Click" HorizontalAlignment="Right"/>
-         </DockPanel>
-      </Border>
-
       <!-- SIDEBAR -->
-      <Border Background="#FF3F3F3F" CornerRadius="4" BorderThickness="0" Margin="10,70,0,10" HorizontalAlignment="Left"  Width="160">
-         <StackPanel Margin="10">
-            <Button x:Name="toggleScoreboard" Style="{StaticResource btn-dark}" Content="Show Scoreboard" Height="35" Width="140" Click="toggleScoreboard_Click" Margin="0,0,0,5" />
-            <Button x:Name="toggleFullScren" Style="{StaticResource btn-dark}" Content="Toggle FullScreen" Height="35" Width="148" Click="toggleFullScren_Click" Margin="0,0,0,5"/>
-            <Button x:Name="updateScoreboard" Style="{StaticResource btn-dark}" Content="Update Scoreboard" Height="35" Width="148" Click="updateScoreboard_Click" Margin="0,0,0,13"/>
+      <Border HorizontalAlignment="Left"  Width="250" Background="Black">
+         <StackPanel>
+            <DockPanel Margin="10, 15, 10, 10">
+
+               <Image Source="pack://application:,,,/Resources/scoreboardlogo.png" VerticalAlignment="top" Height="34" Width="43"/>
+               <Label Content="S C O R E B O A R D" Foreground="#FFEEEEEE" FontSize="20" FontWeight="Light" Height="38" Width="185"/>
+            </DockPanel>
+
+            <StackPanel Margin="20">
+               <Button x:Name="toggleScoreboard" Style="{StaticResource btn-dark}" Content="Show Scoreboard" Height="35"  Click="toggleScoreboard_Click" Margin="0,0,0,5" />
+               <Button x:Name="toggleFullScren" Style="{StaticResource btn-dark}" Content="Toggle FullScreen" Height="35" Click="toggleFullScren_Click" Margin="0,0,0,5"/>
+               <Button x:Name="updateScoreboard" Style="{StaticResource btn-dark}" Content="Update Scoreboard" Height="35"  Click="updateScoreboard_Click" Margin="0,0,0,13"/>
+            </StackPanel>
          </StackPanel>
       </Border>
 
       <!-- MAIN CONFIG -->
-      <Border Background="#FF3F3F3F" CornerRadius="4" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="180,70,0,0" Height="140" Width="474">
+      <Border Style="{StaticResource pnl-dark}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="277,35,0,0" Height="140" Width="474">
          <StackPanel Margin="10">
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
@@ -65,6 +62,22 @@
          </StackPanel>
       </Border>
 
+
+      <!-- tiles -->
+      <Border Style="{StaticResource pnl-dark}" Margin="277,198,0,32" Width="474" HorizontalAlignment="Left">
+         <WrapPanel>
+
+         </WrapPanel>
+      </Border>
+
+
+
+      <!-- window controls -->
+      <DockPanel HorizontalAlignment="Right" VerticalAlignment="top" Height="30">
+         <Button x:Name="b_minimize" Style="{StaticResource btn-ctrl}" Content="" Width="45" FontFamily="Segoe MDL2 Assets" Click="b_minimize_Click" FontSize="9"/>
+         <Button x:Name="b_maximize" Style="{StaticResource btn-ctrl}" Content="" Width="45" FontFamily="Segoe MDL2 Assets" Click="b_maximize_Click" FontSize="9"/>
+         <Button x:Name="b_exit" Style="{StaticResource btn-ctrl}" Content="" Width="45" FontFamily="Segoe MDL2 Assets" Click="b_exit_Click" FontSize="11" />
+      </DockPanel>
    </Grid>
 </Window>
 

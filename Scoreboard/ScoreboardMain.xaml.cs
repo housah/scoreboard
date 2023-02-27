@@ -44,11 +44,39 @@ namespace Scoreboard
          }
       }
 
+      // DRAGABLE WINDOW
+      private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+      {
+         this.DragMove();
+      }
+
       // EXIT
       private void b_exit_Click(object sender, RoutedEventArgs e)
       {
          Close();
       }
+
+      // MAXIMIZE
+      private void b_maximize_Click(object sender, RoutedEventArgs e)
+      {
+         if (this.WindowState == WindowState.Maximized)
+         {
+            this.WindowState = WindowState.Normal;
+            this.b_maximize.Content = "";
+         } 
+         else
+         {
+            this.WindowState = WindowState.Maximized;
+            this.b_maximize.Content = "";
+         }
+      }
+
+      // MINIMIZE
+      private void b_minimize_Click(object sender, RoutedEventArgs e)
+      {
+         this.WindowState = WindowState.Minimized;
+      }
+
 
       // TOGGLE SCREEN WINDOW
       private void toggleScoreboard_Click(object sender, RoutedEventArgs e)
@@ -124,6 +152,8 @@ namespace Scoreboard
          this.updateScoreboard.IsEnabled = false;
       }
 
-   // END
+     
+
+      // END
    }
 }

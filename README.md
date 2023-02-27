@@ -1,5 +1,5 @@
 # scoreboard
-Scoreboard, a Windows desktop application for dual display (scoreboard control & scoreboard screen [fullscreen])
+A Windows desktop application for dual display (scoreboard control & scoreboard screen [fullscreen])
 
 Development tools:
 - Visual studio 2022

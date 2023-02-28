@@ -32,8 +32,8 @@
 
             <StackPanel Margin="20">
                <Button x:Name="toggleScoreboard" Style="{StaticResource btn-dark}" Content="Show Scoreboard" Height="35"  Click="toggleScoreboard_Click" Margin="0,0,0,5" />
-               <Button x:Name="toggleFullScren" Style="{StaticResource btn-dark}" Content="Toggle FullScreen" Height="35" Click="toggleFullScren_Click" Margin="0,0,0,5"/>
-               <Button x:Name="updateScoreboard" Style="{StaticResource btn-dark}" Content="Update Scoreboard" Height="35"  Click="updateScoreboard_Click" Margin="0,0,0,13"/>
+               <Button x:Name="toggleFullScren" Style="{StaticResource btn-dark}" Content="Toggle FullScreen" Height="35" Click="toggleFullScren_Click" Margin="0,0,0,5" IsEnabled="False"/>
+               <Button x:Name="updateScoreboard" Style="{StaticResource btn-dark}" Content="Update Scoreboard" Height="35"  Click="updateScoreboard_Click" Margin="0,0,0,13" IsEnabled="False"/>
             </StackPanel>
          </StackPanel>
       </Border>

@@ -25,8 +25,6 @@ namespace Scoreboard
       public ScoreboardMain()
       {
          InitializeComponent();
-         this.toggleFullScren.IsEnabled = false;
-         this.updateScoreboard.IsEnabled = false;
       }
 
       // EXIT OVERRIDE
@@ -46,7 +44,7 @@ namespace Scoreboard
       // DRAGGABLE
       private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
       {
-         this.DragMove();
+         DragMove();
       }
 
       // EXIT
@@ -58,25 +56,25 @@ namespace Scoreboard
       // MAXIMIZE
       private void b_maximize_Click(object sender, RoutedEventArgs e)
       {
-         if (this.WindowState == WindowState.Maximized)
+         if (WindowState == WindowState.Maximized)
          {
-            this.MainWindow.Margin = new Thickness(0);
-            this.WindowState = WindowState.Normal;
-            this.b_maximize.Content = "";
-            
+            MainWindow.Margin = new Thickness(0);
+            WindowState = WindowState.Normal;
+            b_maximize.Content = "";
+               
          } 
          else
          {
-            this.WindowState = WindowState.Maximized;
-            this.b_maximize.Content = "";
-            this.MainWindow.Margin = new Thickness(5);
-         }
+            WindowState = WindowState.Maximized;
+            b_maximize.Content = "";
+            MainWindow.Margin = new Thickness(5);
+         }  
       }
 
       // MINIMIZE
       private void b_minimize_Click(object sender, RoutedEventArgs e)
       {
-         this.WindowState = WindowState.Minimized;
+         WindowState = WindowState.Minimized;
       }
 
 
@@ -87,36 +85,32 @@ namespace Scoreboard
 
             Dictionary<string, string> options = new Dictionary<string, string>
             {
-               { "bgColor", this.bgcolorpicker.SelectedColor.ToString() },
-               { "fgColor", this.fgcolorpicker.SelectedColor.ToString() },
-               { "eventName", this.eventName.Text },
-               { "eventFase", this.eventFase.Text }
+               { "bgColor", bgcolorpicker.SelectedColor.ToString() },
+               { "fgColor", fgcolorpicker.SelectedColor.ToString() },
+               { "eventName", eventName.Text },
+               { "eventFase", eventFase.Text }
             };
 
             this.sb = new ScoreboardScreen(this, options);
             this.sb.WindowState = WindowState.Normal;
             this.sb.Show();
-            this.toggleScoreboard.Content = "Hide Scoreboard";
-            this.toggleFullScren.IsEnabled = true;
-            this.updateScoreboard.IsEnabled = true;
+            toggleScoreboard.Content = "Hide Scoreboard";
+            toggleFullScren.IsEnabled = true;
+            updateScoreboard.IsEnabled = true;
          } else
          {
             this.sb.Close();
             this.sb = null;
-            this.toggleScoreboard.Content = "Show Scoreboard";
-            this.toggleFullScren.IsEnabled = false;
-            this.updateScoreboard.IsEnabled = false;
+            toggleScoreboard.Content = "Show Scoreboard";
+            toggleFullScren.IsEnabled = false;
+            updateScoreboard.IsEnabled = false;
          }
       }
 
       // TOGGLE FULL SCREEN
       private void toggleFullScren_Click(object sender, RoutedEventArgs e)
       {
-         if (this.sb != null)
-         {
-            this.sb.ToggleFullScreen();
-            //this.Focus();
-         }
+         this.sb?.ToggleFullScreen();
       }
 
       // UPDATE SCREEN
@@ -126,10 +120,10 @@ namespace Scoreboard
          {
             sb.UpdateScreen(
                new Dictionary<string, string> {
-                  { "bgColor", this.bgcolorpicker.SelectedColor.ToString() },
-                  { "fgColor", this.fgcolorpicker.SelectedColor.ToString() },
-                  { "eventName", this.eventName.Text },
-                  { "eventFase", this.eventFase.Text }
+                  { "bgColor", bgcolorpicker.SelectedColor.ToString() },
+                  { "fgColor", fgcolorpicker.SelectedColor.ToString() },
+                  { "eventName", eventName.Text },
+                  { "eventFase", eventFase.Text }
                }
             );
          }
@@ -139,9 +133,9 @@ namespace Scoreboard
       public void resetScoreboard()
       {
          this.sb = null;
-         this.toggleScoreboard.Content = "Show Scoreboard";
-         this.toggleFullScren.IsEnabled = false;
-         this.updateScoreboard.IsEnabled = false;
+         toggleScoreboard.Content = "Show Scoreboard";
+         toggleFullScren.IsEnabled = false;
+         updateScoreboard.IsEnabled = false;
       }
 
 

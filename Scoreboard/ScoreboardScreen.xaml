@@ -5,13 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Scoreboard"
         mc:Ignorable="d"
-        Title="Scoreboard  {Screen}" Height="450" Width="800" WindowStartupLocation="CenterOwner" WindowState="Maximized" Background="#FF333333" Closing="Window_Closing" ShowInTaskbar="False">
-   <Grid>
+        Title="Scoreboard {Screen}" Height="600" Width="1024" WindowStartupLocation="CenterOwner" WindowStyle="None" Background="#FF333333" Closing="Window_Closing" ShowInTaskbar="False" MouseLeftButtonDown="Window_MouseLeftButtonDown" PreviewKeyDown="Window_PreviewKeyDown">
 
-      <Label x:Name="eventName" Content="EventName" FontSize="48" Foreground="White" Height="65" VerticalAlignment="Top" VerticalContentAlignment="Center" Padding="10,0,10,0" FontWeight="Medium"/>
+   <WindowChrome.WindowChrome>
+      <WindowChrome CaptionHeight="0"/>
+   </WindowChrome.WindowChrome>
 
-      <Label x:Name="eventFase" Content="EventFase" FontSize="35" Foreground="White" Height="52" VerticalAlignment="Top" Margin="0,48,0,0" VerticalContentAlignment="Center" FontWeight="Light" Padding="10,0,10,0"/>
 
+   <Grid x:Name="ScreenWindow">
+      <DockPanel x:Name="ScreenWindowContent">
 
+      </DockPanel>
+
+      <DockPanel HorizontalAlignment="Right" VerticalAlignment="top" Height="30">
+         <Button x:Name="b_fullscreen" Style="{StaticResource btn-ctrl}" Content="" Width="45" FontFamily="Segoe MDL2 Assets" FontSize="16" Click="b_fullscreen_Click"/>
+         <Button x:Name="b_exit" Style="{StaticResource btn-ctrl}" Content="" Width="45" FontFamily="Segoe MDL2 Assets"  FontSize="11" Click="b_exit_Click" />
+      </DockPanel>
    </Grid>
 </Window>

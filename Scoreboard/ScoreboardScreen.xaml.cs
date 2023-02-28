@@ -1,51 +1,95 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Scoreboard
 {
    public partial class ScoreboardScreen : Window
    {
-
       private readonly ScoreboardMain? parent = null;
-      private Dictionary<string, string> options = new Dictionary<string, string>();
-
+      private UserControl? child = null;
+      
       public ScoreboardScreen(ScoreboardMain parent, Dictionary<string, string> options)
       {
          InitializeComponent();
          this.parent = parent;
 
+         child = new Intro(options);
+         this.ScreenWindowContent.Children.Add(child);
+
          UpdateScreen(options);
       }
 
+      // ON CLOSING
       private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
       {  
          parent?.resetScoreboard();
       }
 
-
+      // UPDATE BACKGROUND COLOR
       public void UpdateScreen(Dictionary<string, string> options)
       {
-         this.options = options;
-
          BrushConverter bc = new BrushConverter();
-         Background = bc.ConvertFrom(options["bgColor"]) as Brush;
-         eventName.Foreground = bc.ConvertFrom(options["fgColor"]) as Brush;
-         eventFase.Foreground = bc.ConvertFrom(options["fgColor"]) as Brush;
+         this.Background = bc.ConvertFrom(options["bgColor"]) as Brush;
 
-         // event name & fase
-         eventName.Content = options["eventName"];
-         eventFase.Content = options["eventFase"];
+         ((Intro)child).UpdateContent(options);
       }
+
+      // CLOSE WINDOW
+      private void b_exit_Click(object sender, RoutedEventArgs e)
+      {
+         this.Close();
+      }
+
+      // FULLSCREEN
+      private void b_fullscreen_Click(object sender, RoutedEventArgs e)
+      {
+         ToggleFullScreen();
+      }
+
+      // DRAGGABLE
+      private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+      {
+         this.DragMove();
+      }
+
+      // TOGGLE FULLSCREEN
+      public void ToggleFullScreen()
+      {
+         if (this.WindowState == WindowState.Maximized)
+         {
+            this.ScreenWindow.Margin = new Thickness(0);
+            this.WindowState = WindowState.Normal;
+            this.b_exit.Visibility = Visibility.Visible;
+            this.b_exit.IsEnabled = true;
+            this.b_fullscreen.Visibility = Visibility.Visible;
+            this.b_fullscreen.IsEnabled = true;
+         } 
+         else
+         {
+            this.WindowState = WindowState.Maximized;
+            this.b_exit.Visibility = Visibility.Hidden;
+            this.b_exit.IsEnabled = false;
+            this.b_fullscreen.Visibility = Visibility.Hidden;
+            this.b_fullscreen.IsEnabled = false;
+            this.ScreenWindow.Margin = new Thickness(0);
+         }
+      }
+
+      // ESCAPE FULLSCREEN
+      private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+      {
+         if (e.Key == Key.Escape)
+         {
+            if (this.WindowState == WindowState.Maximized)
+            {
+               ToggleFullScreen();
+            }
+         }
+      }
+
+   // END
    }
 }

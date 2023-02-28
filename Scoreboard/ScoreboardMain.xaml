@@ -19,7 +19,7 @@
    </WindowChrome.WindowChrome>
 
 
-   <Grid>
+   <Grid x:Name="MainWindow">
 
       <!-- SIDEBAR -->
       <Border HorizontalAlignment="Left"  Width="250" Background="Black">

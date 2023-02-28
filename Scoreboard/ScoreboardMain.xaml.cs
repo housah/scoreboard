@@ -18,9 +18,8 @@ namespace Scoreboard
 {
    public partial class ScoreboardMain : Window
    {
-
       private ScoreboardScreen? sb = null; // SCREEN WINDOW
-      private bool fs = false;             // FULLSCREEN STATUS
+
 
       // INIT
       public ScoreboardMain()
@@ -44,7 +43,7 @@ namespace Scoreboard
          }
       }
 
-      // DRAGABLE WINDOW
+      // DRAGGABLE
       private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
       {
          this.DragMove();
@@ -61,13 +60,16 @@ namespace Scoreboard
       {
          if (this.WindowState == WindowState.Maximized)
          {
+            this.MainWindow.Margin = new Thickness(0);
             this.WindowState = WindowState.Normal;
             this.b_maximize.Content = "";
+            
          } 
          else
          {
             this.WindowState = WindowState.Maximized;
             this.b_maximize.Content = "";
+            this.MainWindow.Margin = new Thickness(5);
          }
       }
 
@@ -110,20 +112,10 @@ namespace Scoreboard
       // TOGGLE FULL SCREEN
       private void toggleFullScren_Click(object sender, RoutedEventArgs e)
       {
-         if (this.sb != null) { 
-            if (!fs) {
-               this.sb.WindowStyle = WindowStyle.None;
-               this.sb.WindowState = WindowState.Maximized;
-               
-               this.fs = true;
-               this.Focus();
-            } else
-            {
-               this.sb.WindowState = WindowState.Normal;
-               this.sb.WindowStyle = WindowStyle.SingleBorderWindow;
-               this.fs = false;
-               this.Focus();
-            }
+         if (this.sb != null)
+         {
+            this.sb.ToggleFullScreen();
+            //this.Focus();
          }
       }
 
@@ -152,7 +144,6 @@ namespace Scoreboard
          this.updateScoreboard.IsEnabled = false;
       }
 
-     
 
       // END
    }
